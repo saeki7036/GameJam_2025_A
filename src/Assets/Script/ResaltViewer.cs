@@ -3,6 +3,11 @@ using UnityEngine.UI;
 
 public class ResaltViewer : MonoBehaviour
 {
+    [SerializeField] Image RankImage;
+    [Space]
+    [SerializeField] Sprite[] RankSprites;
+    [SerializeField] float[] RankScale;
+    [Space]
     [SerializeField] Text ClashedText;
     [SerializeField] Text MissText;
 
@@ -28,5 +33,19 @@ public class ResaltViewer : MonoBehaviour
     {
         ClashedText.text = "... " + ClashedCount.ToString();
         MissText.text = "... " + MissCount.ToString();
+
+        int Allcount = ClashedCount + MissCount;
+
+        float t = (float)Mathf.Clamp01((float)ClashedCount / (float)Allcount);
+
+        Debug.Log(t);
+
+        for(int i = 0; RankSprites.Length > i; i++)
+        {
+            RankImage.sprite = RankSprites[i];
+
+            if (RankScale[i] <= t)
+                break;
+        }
     }
 }

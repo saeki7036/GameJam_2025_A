@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CountDownScript : MonoBehaviour
 {
     [SerializeField] Text TimerText;
-    float limitTime = 60;
+    [SerializeField] float limitTime = 60;
 
     [SerializeField]  bool IscountDown = false;
 

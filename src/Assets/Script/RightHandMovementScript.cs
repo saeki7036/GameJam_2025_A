@@ -149,7 +149,7 @@ public class RightHandMovementScript : MonoBehaviour
             elapsed += Time.fixedDeltaTime;
             float t = Mathf.Clamp01(elapsed / Closeduration);
             transform.position = Vector3.Lerp(StartPos, EndPos, t);
-            yield return null;
+            yield return new WaitForFixedUpdate(); // © •¨—‚İ‚É“¯Šú
         }
 
         // –ß‚è
@@ -160,7 +160,7 @@ public class RightHandMovementScript : MonoBehaviour
             elapsed += Time.fixedDeltaTime;
             float t = Mathf.Clamp01(elapsed / Closeduration);
             transform.position = Vector3.Lerp(EndPos, StartPos, t);
-            yield return null;
+            yield return new WaitForFixedUpdate(); // © •¨—‚İ‚É“¯Šú
         }
 
         // ˆ—I—¹
