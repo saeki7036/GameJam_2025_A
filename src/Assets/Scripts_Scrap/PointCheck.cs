@@ -4,7 +4,7 @@ public class PointCheck : MonoBehaviour
 {
     [SerializeField] RightHandMovementScript rightHand;
     [SerializeField] LeftHandMovementScript leftHand;
-
+    [SerializeField] ResaltViewer resaltViewer;
     [SerializeField] EffectScript effectScript;
 
     [SerializeField] GameObject SuccessEffect;
@@ -26,6 +26,8 @@ public class PointCheck : MonoBehaviour
 
         Vector3 crushedPrehabPos = scrapObject.GetTransform.position;
         Quaternion crushedPrehabQuaternion = scrapObject.GetTransform.rotation;
+
+        resaltViewer.AddCount(isSame);
 
         if (isSame)
         {

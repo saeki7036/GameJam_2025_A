@@ -105,5 +105,5 @@ MonoBehaviour:
   MaxScale: 0.4
   MinScale: 0.25
   successPoints:
-  - SuccessLeftPoint: 1
-    SuccessRightPoint: 3
+  - SuccessLeftPoint: 3
+    SuccessRightPoint: 1
