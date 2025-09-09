@@ -9,6 +9,9 @@ public class ScrapMovement : MonoBehaviour
 
     [SerializeField]PointCheck pointCheck;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip DestroyClip;
+
     List<ScrapObject> ScrapObjects;
 
     public void AddList(ScrapObject scrapObject) => ScrapObjects.Add(scrapObject);
@@ -53,6 +56,8 @@ public class ScrapMovement : MonoBehaviour
                 pointCheck.PointSameCheck(ScrapObjects[i]);
                 ScrapObjects[i].DestroyScrap();
                 ScrapObjects.RemoveAt(i);
+
+                audioSource.PlayOneShot(DestroyClip);
             }
         }
     }

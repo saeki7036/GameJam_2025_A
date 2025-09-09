@@ -14,9 +14,11 @@ public class LeftHandMovementScript : MonoBehaviour
     [SerializeField] Sprite OpenSprite;
     [SerializeField] SpriteRenderer spriteRenderer;
     [Space]
-
     [SerializeField] float Closeduration = 0.3f;
     [SerializeField] Transform CloseHandTransform;
+    [Space]
+    [SerializeField] AudioClip moveClip;
+    [SerializeField] AudioSource SEsource;
     [Space]
     [SerializeField] Transform[] lPosition;
     bool IsInputLeft, IsCloseHand;
@@ -80,6 +82,8 @@ public class LeftHandMovementScript : MonoBehaviour
                 transform.eulerAngles = lPosition[lposition].eulerAngles;
 
                 IsInputLeft = false;
+
+                SEsource.PlayOneShot(moveClip);
             }
             if (lindex == -1)
             {
@@ -93,6 +97,8 @@ public class LeftHandMovementScript : MonoBehaviour
                 transform.eulerAngles = lPosition[lposition].eulerAngles;
 
                 IsInputLeft = false;
+
+                SEsource.PlayOneShot(moveClip);
             }
         }
     }
