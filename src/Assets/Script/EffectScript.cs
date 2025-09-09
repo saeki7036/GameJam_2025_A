@@ -3,11 +3,51 @@ using UnityEngine;
 
 public class EffectScript : MonoBehaviour
 {
-    [SerializeField] GameObject Effect;
+    [SerializeField] float DestroyTime = 0.6f;
+
+    [SerializeField] Vector2[] ForceList = 
+        {   new Vector2(200, 300),
+            new Vector2(200, 0),
+            new Vector2(-200, 300),
+            new Vector2(-200, 0)
+        };
+
+
+    public void EffectsPopUp(GameObject[] effectPrehab)
+    {
+        for (int i = 0; i < effectPrehab.Length; i++)
+        {
+            GameObject effect = Instantiate(effectPrehab[i]);
+
+            if (effect.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb2d))
+            {
+                rb2d.AddForce(ForceList[i]);
+            }
+
+            Destroy(effect, DestroyTime);
+        }
+    }
+
+    public void EffectInstantiate(GameObject effectPrehab)
+    {
+        for (int i = 0; i < ForceList.Length; i++)
+        {
+            GameObject effect = Instantiate(effectPrehab);
+
+            if(effect.TryGetComponent<Rigidbody2D>(out Rigidbody2D rb2d))
+            {
+                rb2d.AddForce(ForceList[i]);
+            }
+
+            Destroy(effect, DestroyTime);
+        }
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        /*
         Vector2 Force1 = new Vector2(200, 300);
         Vector2 Force2 = new Vector2(200, 0);
         Vector2 Force3 = new Vector2(-200, 300);
@@ -35,11 +75,6 @@ public class EffectScript : MonoBehaviour
         Destroy(effect2, 0.6f);
         Destroy(effect3, 0.6f);
         Destroy(effect4,0.6f);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        */
     }
 }

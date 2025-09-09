@@ -5,12 +5,15 @@ public class PointCheck : MonoBehaviour
     [SerializeField] RightHandMovementScript rightHand;
     [SerializeField] LeftHandMovementScript leftHand;
 
-    int left = 2, right = 2;
+    [SerializeField] EffectScript effectScript;
+
+    [SerializeField] GameObject SuccessEffect;
+    [SerializeField] GameObject[] FailureEffects;
 
     public void PointSameCheck(ScrapObject scrapObject)
     {
-        left = leftHand.GetLpositionPoint;
-        right = rightHand.GetRpositionPoint;
+        int left = leftHand.GetLpositionPoint;
+        int right = rightHand.GetRpositionPoint;
 
         rightHand.CloseHand();
         leftHand.CloseHand();
@@ -28,6 +31,8 @@ public class PointCheck : MonoBehaviour
                 scrapObject.GetSuccessPrehab,
                 crushedPrehabPos,
                 crushedPrehabQuaternion);
+
+            effectScript.EffectInstantiate(SuccessEffect);
         }
         else
         {
@@ -37,6 +42,8 @@ public class PointCheck : MonoBehaviour
                 scrapObject.GetFailurePrehab,
                 crushedPrehabPos,
                 crushedPrehabQuaternion);
+
+            effectScript.EffectsPopUp(FailureEffects);
         }
     }
 
