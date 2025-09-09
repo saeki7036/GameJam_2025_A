@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a7515439198ed44b30720fc1302e21, type: 3}
   m_Name: S 2
   m_EditorClassIdentifier: 
-  Prehab: {fileID: 3761065840623646121, guid: 05df946a3b7c9fc4f915e275d5bd57c5, type: 3}
+  Prehab: {fileID: 3761065840623646121, guid: f4520450d6dc5204995c46d9a4082173, type: 3}
   SpwanTime: 12

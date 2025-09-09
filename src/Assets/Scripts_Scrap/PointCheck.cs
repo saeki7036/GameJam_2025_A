@@ -2,10 +2,19 @@ using UnityEngine;
 
 public class PointCheck : MonoBehaviour
 {
+    [SerializeField] RightHandMovementScript rightHand;
+    [SerializeField] LeftHandMovementScript leftHand;
+
     int left = 2, right = 2;
 
     public void PointSameCheck(ScrapObject scrapObject)
     {
+        left = leftHand.GetLpositionPoint;
+        right = rightHand.GetRpositionPoint;
+
+        rightHand.CloseHand();
+        leftHand.CloseHand();
+
         bool isSame = scrapObject.IsSuccess(left, right);
 
         Vector3 crushedPrehabPos = scrapObject.GetTransform.position;
