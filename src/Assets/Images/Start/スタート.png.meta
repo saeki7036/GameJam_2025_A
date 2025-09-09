@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 1a1e6d3df479a1147879d28a0554a3fc
+guid: d169312d4daabd8468b668a2473d6843
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1755474232823117088
-    second: L hand 1_0
+      213: -3177448819861220123
+    second: "\u30B9\u30BF\u30FC\u30C8_0"
+  - first:
+      213: -6866545143000575600
+    second: "\u30B9\u30BF\u30FC\u30C8_1"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: L hand 1_0
+      name: "\u30B9\u30BF\u30FC\u30C8_0"
       rect:
         serializedVersion: 2
-        x: 215
-        y: 54
-        width: 1396
-        height: 1951
+        x: 14
+        y: 459
+        width: 1969
+        height: 1239
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 025f5cb8382bc5810800000000000000
-      internalID: 1755474232823117088
+      spriteID: 5e41038122f67e3d0800000000000000
+      internalID: -3177448819861220123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u30B9\u30BF\u30FC\u30C8_1"
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 431
+        width: 372
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 091544da29125b0a0800000000000000
+      internalID: -6866545143000575600
       vertices: []
       indices: 
       edges: []
@@ -147,8 +172,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      L hand 1_0: 1755474232823117088
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

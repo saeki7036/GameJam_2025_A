@@ -11,7 +11,7 @@ public class ScrapObject : MonoBehaviour
 
     [SerializeField] SuccessPoint[] successPoints;
 
-    static readonly float DestroyDeley = 0.2f;
+    static readonly float DestroyDeley = 0.08f;
 
     float travelingTime;
 

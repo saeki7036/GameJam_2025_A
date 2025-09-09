@@ -5,6 +5,11 @@ public class CountDownScript : MonoBehaviour
 {
     [SerializeField] Text TimerText;
     float limitTime = 60;
+
+    [SerializeField]  bool IscountDown = false;
+
+    public float GetlimitTime => limitTime;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,9 +17,12 @@ public class CountDownScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        limitTime -= Time.deltaTime;
+        if (!IscountDown)
+            return;
+
+        limitTime -= Time.fixedDeltaTime;
 
         if (limitTime <= 0)
         {

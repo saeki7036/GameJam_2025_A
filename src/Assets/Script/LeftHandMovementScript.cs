@@ -1,17 +1,33 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class LeftHandMovementScript : MonoBehaviour
 {
     int lindex;
     int lposition = 2;
+
+    [SerializeField] int DefaltOrderLayer = 0;
+    [SerializeField] int CloseOrderLayer = 10;
+    [SerializeField] Sprite DefaltSprite;
+    [SerializeField] Sprite CloseSprite;
+    [SerializeField] Sprite OpenSprite;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [Space]
+
+    [SerializeField] float Closeduration = 0.3f;
+    [SerializeField] Transform CloseHandTransform;
+    [Space]
     [SerializeField] Transform[] lPosition;
-    bool IsInputLeft;
+    bool IsInputLeft, IsCloseHand;
+
+    public int GetLpositionPoint => lposition;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         IsInputLeft = true;
-
+        IsCloseHand = false;
         lindex = 0;
 
         transform.position = lPosition[lposition].position;
@@ -21,7 +37,7 @@ public class LeftHandMovementScript : MonoBehaviour
     void Update()
     {
         var gamepad = Gamepad.current;
-        if (gamepad == null)
+        if (gamepad == null || IsCloseHand)
         {
             return;
         }
@@ -68,9 +84,9 @@ public class LeftHandMovementScript : MonoBehaviour
             if (lindex == -1)
             {
                 lposition += 1;
-                if (lposition > 5)
+                if (lposition >= lPosition.Length)
                 {
-                    lposition = 5;
+                    lposition = lPosition.Length -1;
                 }
 
                 transform.position = lPosition[lposition].position;
@@ -79,5 +95,43 @@ public class LeftHandMovementScript : MonoBehaviour
                 IsInputLeft = false;
             }
         }
+    }
+
+    public void CloseHand() => StartCoroutine(CloseLeftHand());
+    IEnumerator CloseLeftHand()
+    {
+        Vector2 StartPos = transform.position;
+        Vector2 EndPos = CloseHandTransform.position;
+        IsCloseHand = true;
+
+        // çsÇ´
+        spriteRenderer.sprite = CloseSprite;
+        spriteRenderer.sortingOrder = CloseOrderLayer;
+
+        float elapsed = 0f;
+        while (elapsed < Closeduration)
+        {
+            elapsed += Time.fixedDeltaTime;
+            float t = Mathf.Clamp01(elapsed / Closeduration);
+            transform.position = Vector3.Lerp(StartPos, EndPos, t);
+            yield return null;
+        }
+
+        // ñﬂÇË
+        spriteRenderer.sprite = OpenSprite;
+
+        elapsed = 0f;
+        while (elapsed < Closeduration)
+        {
+            elapsed += Time.fixedDeltaTime;
+            float t = Mathf.Clamp01(elapsed / Closeduration);
+            transform.position = Vector3.Lerp(EndPos, StartPos, t);
+            yield return null;
+        }
+
+        // èàóùèIóπ
+        spriteRenderer.sprite = DefaltSprite;
+        spriteRenderer.sortingOrder = DefaltOrderLayer;
+        IsCloseHand = false;
     }
 }

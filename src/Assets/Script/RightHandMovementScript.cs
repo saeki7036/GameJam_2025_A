@@ -1,20 +1,31 @@
-using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
+using System.Collections;
 
 public class RightHandMovementScript : MonoBehaviour
 {
     int rindex;
     int rposition = 2;
+    [SerializeField] int DefaltOrderLayer = 0;
+    [SerializeField] int CloseOrderLayer = 10;
+    [SerializeField] Sprite DefaltSprite;
+    [SerializeField] Sprite CloseSprite;
+    [SerializeField] Sprite OpenSprite;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [Space]
+    [SerializeField] float Closeduration = 0.3f;
+    [SerializeField] Transform CloseHandTransform;
+    [Space]
     [SerializeField] Transform[] rPosition;
-    bool IsInputRight;
+    bool IsInputRight, IsCloseHand;
+
+    public int GetRpositionPoint => rposition;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         IsInputRight = true;
-
+        IsCloseHand = false;
         rindex = 0;
         /*
                 Vector2 RP0 = rPosition[0].position;
@@ -54,12 +65,11 @@ public class RightHandMovementScript : MonoBehaviour
     void Update()
     {
         var gamepad = Gamepad.current;
-        if (gamepad == null)
+        if (gamepad == null || IsCloseHand)
         {
             return;
         }
 
-        var leftStick = gamepad.leftStick.y.ReadValue();
         var rightStick = gamepad.rightStick.y.ReadValue();
 
         //Debug.Log(leftStick + " " + rightStick);
@@ -101,9 +111,9 @@ public class RightHandMovementScript : MonoBehaviour
             if (rindex == -1)
             {
                 rposition += 1;
-                if (rposition > 5)
+                if (rposition >= rPosition.Length)
                 {
-                    rposition = 5;
+                    rposition = rPosition.Length -1;
                 }
 
                 transform.position = rPosition[rposition].position;
@@ -112,5 +122,43 @@ public class RightHandMovementScript : MonoBehaviour
                 IsInputRight = false;
             }
         }
+    }
+
+    public void CloseHand() => StartCoroutine(CloseRightHand());
+
+    IEnumerator CloseRightHand()
+    {
+        Vector2 StartPos = transform.position;
+        Vector2 EndPos = CloseHandTransform.position;
+        IsCloseHand = true;
+
+        // çsÇ´
+        spriteRenderer.sprite = CloseSprite;
+        spriteRenderer.sortingOrder = CloseOrderLayer;
+
+        float elapsed = 0f;
+        while (elapsed < Closeduration)
+        {
+            elapsed += Time.fixedDeltaTime;
+            float t = Mathf.Clamp01(elapsed / Closeduration);
+            transform.position = Vector3.Lerp(StartPos, EndPos, t);
+            yield return null;
+        }
+
+        // ñﬂÇË
+        spriteRenderer.sprite = OpenSprite;
+        elapsed = 0f;
+        while (elapsed < Closeduration)
+        {
+            elapsed += Time.fixedDeltaTime;
+            float t = Mathf.Clamp01(elapsed / Closeduration);
+            transform.position = Vector3.Lerp(EndPos, StartPos, t);
+            yield return null;
+        }
+
+        // èàóùèIóπ
+        spriteRenderer.sprite = DefaltSprite;
+        spriteRenderer.sortingOrder = DefaltOrderLayer;
+        IsCloseHand = false;
     }
 }

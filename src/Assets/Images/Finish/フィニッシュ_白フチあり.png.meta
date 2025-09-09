@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1a1e6d3df479a1147879d28a0554a3fc
+guid: f19e853f3888dfb4b9a32f6de718f66a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1755474232823117088
-    second: L hand 1_0
+      213: 8824859105421493200
+    second: "\u30D5\u30A3\u30CB\u30C3\u30B7\u30E5_\u767D\u30D5\u30C1\u3042\u308A_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: L hand 1_0
+      name: "\u30D5\u30A3\u30CB\u30C3\u30B7\u30E5_\u767D\u30D5\u30C1\u3042\u308A_0"
       rect:
         serializedVersion: 2
-        x: 215
-        y: 54
-        width: 1396
-        height: 1951
+        x: 45
+        y: 308
+        width: 1900
+        height: 1632
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 025f5cb8382bc5810800000000000000
-      internalID: 1755474232823117088
+      spriteID: 0d3058ba992387a70800000000000000
+      internalID: 8824859105421493200
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      L hand 1_0: 1755474232823117088
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
