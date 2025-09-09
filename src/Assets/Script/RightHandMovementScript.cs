@@ -16,6 +16,9 @@ public class RightHandMovementScript : MonoBehaviour
     [SerializeField] float Closeduration = 0.3f;
     [SerializeField] Transform CloseHandTransform;
     [Space]
+    [SerializeField] AudioClip moveClip;
+    [SerializeField] AudioSource SEsource;
+    [Space]
     [SerializeField] Transform[] rPosition;
     bool IsInputRight, IsCloseHand;
 
@@ -107,6 +110,8 @@ public class RightHandMovementScript : MonoBehaviour
                 transform.eulerAngles = rPosition[rposition].eulerAngles;
 
                 IsInputRight = false;
+
+                SEsource.PlayOneShot(moveClip);
             }
             if (rindex == -1)
             {
@@ -120,6 +125,8 @@ public class RightHandMovementScript : MonoBehaviour
                 transform.eulerAngles = rPosition[rposition].eulerAngles;
 
                 IsInputRight = false;
+
+                SEsource.PlayOneShot(moveClip);
             }
         }
     }

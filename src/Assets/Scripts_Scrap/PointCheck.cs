@@ -10,6 +10,10 @@ public class PointCheck : MonoBehaviour
     [SerializeField] GameObject SuccessEffect;
     [SerializeField] GameObject[] FailureEffects;
 
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip SuccessClip;
+    [SerializeField] AudioClip FailureClip;
+
     public void PointSameCheck(ScrapObject scrapObject)
     {
         int left = leftHand.GetLpositionPoint;
@@ -33,6 +37,8 @@ public class PointCheck : MonoBehaviour
                 crushedPrehabQuaternion);
 
             effectScript.EffectInstantiate(SuccessEffect);
+
+            audioSource.PlayOneShot(SuccessClip);
         }
         else
         {
@@ -44,6 +50,8 @@ public class PointCheck : MonoBehaviour
                 crushedPrehabQuaternion);
 
             effectScript.EffectsPopUp(FailureEffects);
+
+            audioSource.PlayOneShot(FailureClip);
         }
     }
 
