@@ -2483,8 +2483,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2320fe999cda9a3438b4a365a1bcb0dd, type: 3}
   RankScale:
   - 1
-  - 0.85
-  - 0.7
+  - 0.8
+  - 0.65
   - 0.6
   ClashedText: {fileID: 470634209}
   MissText: {fileID: 319858617}
