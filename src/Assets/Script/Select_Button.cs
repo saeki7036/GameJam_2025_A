@@ -7,7 +7,7 @@ public class Select_Button : MonoBehaviour
 {
     [SerializeField] protected Button[] Buttons;
     [SerializeField] protected GameObject cursol;
-    //[SerializeField] protected AudioSource audioSE;
+    [SerializeField] protected AudioSource audioSE;
     [SerializeField] protected Input_Vector input = Input_Vector.Vertical;
     [SerializeField] protected int currentButtonIndex = 0;
     [SerializeField] float InputResponseValue = 0.3f;
@@ -36,7 +36,7 @@ public class Select_Button : MonoBehaviour
 
         if (buttonPos == currentButtonIndex) return;
 
-        //audioSE?.PlayOneShot(audioSE.clip);
+        audioSE?.PlayOneShot(audioSE.clip);
 
         if (currentButtonIndex == buttonPos)
         {
@@ -94,7 +94,7 @@ public class Select_Button : MonoBehaviour
         buttonType = next < 0 ? Button_Type.Up : Button_Type.Down;
         //カーソルの移動
         cursol.transform.localPosition = Buttons[currentButtonIndex].transform.localPosition;
-        //audioSE?.PlayOneShot(audioSE.clip);
+        audioSE?.PlayOneShot(audioSE.clip);
     }
 
     /// <summary>
