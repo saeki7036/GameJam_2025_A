@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CountDownScript : MonoBehaviour
@@ -8,13 +9,11 @@ public class CountDownScript : MonoBehaviour
 
     [SerializeField]  bool IscountDown = false;
 
-    public float GetlimitTime => limitTime;
+    [SerializeField] UnityEvent UnityEvent;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public void SetCountdown() => IscountDown = true;
+
+    public float GetlimitTime => limitTime;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -27,6 +26,10 @@ public class CountDownScript : MonoBehaviour
         if (limitTime <= 0)
         {
             limitTime = 0;
+
+            IscountDown = false;
+
+            UnityEvent.Invoke();
         }
 
         TimerText.text = limitTime.ToString("F0");
